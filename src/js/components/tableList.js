@@ -15,7 +15,6 @@ class TableList extends React.Component {
 		this.state = {}
 	}
     render(){
-    	console.log(this.props.data)
     	const {data} = this.props
 	    return (
 	      <div style={{width: '100%', margin: 'auto', minHeight: '20%'}}>

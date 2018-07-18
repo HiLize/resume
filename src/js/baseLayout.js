@@ -68,7 +68,7 @@ class BaseLayout extends React.Component {
 		        <div style={{ background: '#fff', height: '100%', width: '100%', overflow: 'hidden'}}>
 		        	<div style={{height: '100%', width: '80%', overflow: 'auto', margin: 'auto'}}>
 			      		{baseInfo.map(function (data, index) {
-			      			return <TableList key={index} data={data} />
+							return (<TableList key={index} data={data} />)
 			      		})}
 		      		</div>
 		        </div>
