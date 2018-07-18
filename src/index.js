@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import App from './js/APP.js';
+import BaseLayout from './js/baseLayout.js';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<BaseLayout />, document.getElementById('root'));
