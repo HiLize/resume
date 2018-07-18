@@ -29,7 +29,8 @@ class App extends React.Component {
    <Layout>
     <Sider width='18%' breakpoin={breakpoin}>
       <div style={{width: '100%', textAlign: 'center', margin: '15% auto'}}>
-      	<Avatar icon="user" size='large'/>
+      	{/* 图片路径用require引用才能打包出来。为什么？？？ */}
+      	<Avatar size='large' src={require('../images/image.jpg')} />
       </div>
       <div style={{color: '#fff', textAlign: 'center', marginTop: '50%'}}>
       	<div style={{fontSize: '28px'}}>李泽</div>
