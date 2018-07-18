@@ -49,7 +49,12 @@ module.exports = {
                         //publicPath:output,
                     }
                 }]
-        }]
+        },
+        {
+　　　　　　test: /\.html$/,
+　　　　　　loader: 'html-withimg-loader'
+　　　　}
+        ]
      },
      /*
     //其他解决方案配置
@@ -76,6 +81,7 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(), //调用webpack的热更新插件
         //利用webpack-html-plugin这个插件它可以生成html文件到指定的目录下，这样就可以不用再根目录下建立页面文件了，直接在src下建立模板文件，
         new HtmlWebpackPlugin({
+          hash:true,//去除缓存
           template: __dirname + '/src/index.html'  //默认会在docs路径下生成index.html并引用所有的静态资源
         })
     ]
