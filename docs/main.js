@@ -65,7 +65,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "9719c961e4e61f4813c2";
+/******/ 	var hotCurrentHash = "4e7934ee2ebee3de5485";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -2438,6 +2438,17 @@ eval("module.exports = __webpack_require__.p + \"img/image.jpg?e2846e3b885383f18
 
 /***/ }),
 
+/***/ "./src/index.html":
+/*!************************!*\
+  !*** ./src/index.html ***!
+  \************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = \"<!DOCTYPE html>\\r<html lang=\\\"en\\\">\\r<head>\\r  <meta charset=\\\"UTF-8\\\">\\r  <meta name=\\\"viewport\\\" content=\\\"width=device-width, initial-scale=1.0\\\">\\r  <meta http-equiv=\\\"X-UA-Compatible\\\" content=\\\"ie=edge\\\">\\r  <link href=\\\"favicon.ico\\\" rel=\\\"bookmark\\\" type=\\\"image/x-icon\\\" />\\r  <link href=\\\"favicon.ico\\\" rel=\\\"icon\\\" type=\\\"image/x-icon\\\" />\\r  <link href=\\\"favicon.ico\\\" rel=\\\"shortcut icon\\\" type=\\\"image/x-icon\\\" />\\r  <title>我的简历</title>\\r</head>\\r<body>\\r\\t<div id='root' style=\\\"height: 100%; width: 100%;\\\"></div>\\r</body>\\r</html>\"\n\n//# sourceURL=webpack:///./src/index.html?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
@@ -2446,7 +2457,7 @@ eval("module.exports = __webpack_require__.p + \"img/image.jpg?e2846e3b885383f18
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/_react@16.4.1@react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _reactDom = __webpack_require__(/*! react-dom */ \"./node_modules/_react-dom@16.4.1@react-dom/index.js\");\n\nvar _reactDom2 = _interopRequireDefault(_reactDom);\n\nvar _baseLayout = __webpack_require__(/*! ./js/baseLayout.js */ \"./src/js/baseLayout.js\");\n\nvar _baseLayout2 = _interopRequireDefault(_baseLayout);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n_reactDom2.default.render(_react2.default.createElement(_baseLayout2.default, null), document.getElementById('root'));\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/_react@16.4.1@react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _reactDom = __webpack_require__(/*! react-dom */ \"./node_modules/_react-dom@16.4.1@react-dom/index.js\");\n\nvar _reactDom2 = _interopRequireDefault(_reactDom);\n\n__webpack_require__(/*! ./index.html */ \"./src/index.html\");\n\nvar _baseLayout = __webpack_require__(/*! ./js/baseLayout.js */ \"./src/js/baseLayout.js\");\n\nvar _baseLayout2 = _interopRequireDefault(_baseLayout);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n_reactDom2.default.render(_react2.default.createElement(_baseLayout2.default, null), document.getElementById('root'));\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 
