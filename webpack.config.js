@@ -1,6 +1,8 @@
 const path = require('path'); //node提供的方法，不需要额外安装
 const webpack = require('webpack');
-const HtmlWebpackPlugin  = require('html-webpack-plugin')
+const HtmlWebpackPlugin  = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+var ENV = process.env.NODE_ENV;
 
 module.exports = {
      entry:'./src/index.js', //入口文件
@@ -27,7 +29,10 @@ module.exports = {
         },
         {
             test: /\.css$/,
-            use: ['style-loader', 'css-loader']// 从右开始解析
+            use: ExtractTextPlugin.extract({
+                fallback: 'style-loader',
+                use: 'css-loader'// 从右开始解析
+              })
         },
         {
             test: /\.less$/,
@@ -83,6 +88,11 @@ module.exports = {
         new HtmlWebpackPlugin({
           hash:true,//去除缓存
           template: __dirname + '/src/index.html'  //默认会在docs路径下生成index.html并引用所有的静态资源
+        }),
+        // 分离css，将css样式都封装到docs文件下的css/index.js文件中
+        new ExtractTextPlugin('css/index.css'),
+        new webpack.DefinePlugin({
+          'process.env.NODE_ENV': JSON.stringify(ENV)
         })
     ]
 }

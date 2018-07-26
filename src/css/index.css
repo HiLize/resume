@@ -8,3 +8,25 @@ body {
 	line-height: 25px;
 	margin: 10px auto;
 }
+
+.logo {
+	height: 64px;
+    color: #fff;
+    line-height: 64px;
+    overflow: hidden;
+    font-size: 18px;
+    text-align: center;
+}
+
+.trigger {
+	font-size: 18px;
+    line-height: 64px;
+    padding: 0 24px;
+    cursor: pointer;
+    transition: color .3s;
+}
+.slideContent {
+	width: 2660px;
+	height: 500px;
+	background-color: #f00000;
+}

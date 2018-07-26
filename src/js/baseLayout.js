@@ -1,80 +1,90 @@
 import React from 'react';
 import PropTypes from 'prop-types'; //react 15.x后propTypes使用独立插件
 import '../css/index.css'
-import { Layout, Avatar } from 'antd';
+import { Layout, Avatar, Menu, Icon } from 'antd';
 const { Header, Content, Sider } = Layout;
 
-import TableList from './components/tableList'
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom'
+import BaseFirst from './components/AboutMe/baseFirst'
+import OneNote from './components/IRemember/One'
 
-const baseInfo = [
-	{
-		title: '基本信息',
-		info: [
-			['现居：南京', '籍贯：山东', '年龄：26']
-		]
-	},
-	{
-		title: '教育背景',
-		info: [
-			['华北理工大学', '本科', '2014.9--2016.6'],
-			['华北理工大学迁安学院', '专科', '2011.9--2014.6']
-		] 
-	},
-	{
-		title: '工作经历',
-		info: [
-			['南京创网网络技术有限公司', 'WEB前端工程师', '2016.7--2018.6'],
-			['南京振古技术有限公司', 'WEB前端工程师', '2016.2--2016.5']
-		]
-	}
-]
 class BaseLayout extends React.Component {
 	// propTypes 和 defaultProps 都需要static声明，不然会报错
 	static propTypes = {
-		onClick: PropTypes.string
+		onClick: PropTypes.string,
+		location: PropTypes.object
 	};
 	static defaultProps = {
     	 onClick: '123'
 	};
 	constructor (props) {
 		super(props)
-		this.state = {}
-	}
-    render (){
-    	var breakpoin = {
-		  xs: '480px',
-		  sm: '576px',
-		  md: '768px',
-		  lg: '992px',
-		  xl: '1200px',
-		  xxl: '1600px',
+		this.state = {
+			collapsed: false,
 		}
+	}
+
+	toggle = () => {
+	    this.setState({
+	      collapsed: !this.state.collapsed,
+	    });
+	}
+
+    render (){
 	    return (
+	       <Router>
 		   <Layout>
-		    <Sider width='18%' breakpoin={breakpoin}>
-		      <div style={{width: '100%', textAlign: 'center', margin: '15% auto'}}>
-		      	{/* 图片路径用require引用才能打包出来。为什么？？？ */}
-		      	<Avatar size='large' src={require('../images/image.jpg')} />
-		      </div>
-		      <div style={{color: '#fff', textAlign: 'center', marginTop: '50%'}}>
-		      	<div style={{fontSize: '28px'}}>李泽</div>
-		      	<div className='baseInfoDivStyle'>前端工程师</div>
-		      	<div className='baseInfoDivStyle'>18305155754</div>
-		      	<div className='baseInfoDivStyle'>hi_lize@163.com</div>
-		      </div>
-		    </Sider>
+		    <Sider
+	          trigger={null}
+	          collapsible
+	          collapsed={this.state.collapsed}
+	        >
+	          <div className="logo" >
+	          	<span>李小泽 </span>
+	          </div>
+	          <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
+	            <Menu.Item key="1" >
+	              <Link to='/' />
+	              <Icon type="user" />
+	              <span>关于我</span>
+	            </Menu.Item>
+	            <Menu.Item key="2">
+	              <Link to='/note' />
+	              <Icon type="file-text" />
+	              <span>我记的</span>
+	            </Menu.Item>
+	            <Menu.Item key="3">
+	              <Icon type="video-camera" />
+	              <span>来访的</span>
+	            </Menu.Item>
+	          </Menu>
+	        </Sider>
 		    <Layout style={{height: '100vh' }}>
-		      <Content style={{height: '100%', position: 'relative' }}>
-		        <div style={{ background: '#fff', height: '100%', width: '100%', overflow: 'hidden'}}>
-		        	<div style={{height: '100%', width: '80%', overflow: 'auto', margin: 'auto'}}>
-			      		{baseInfo.map(function (data, index) {
-							return (<TableList key={index} data={data} />)
-			      		})}
-		      		</div>
-		        </div>
+		      <Header style={{ background: '#fff', padding: 0 }}>
+	            <Icon
+	              className="trigger"
+	              type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
+	              onClick={this.toggle}
+	            />
+	          </Header>
+		      <Content style={{ margin: '24px 16px', padding: 24, background: '#fff', minHeight: 280 }}>
+	      		<Route
+	      			exact
+		            path='/'
+		            component={() => <BaseFirst />}
+		          />
+		         <Route
+		         	path='/note'
+		         	component={() => <OneNote />}
+		         />
 		      </Content>
 		    </Layout>
 		  </Layout>
+		  </Router>
 	    );
    }
 }
