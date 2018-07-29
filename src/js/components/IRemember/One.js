@@ -18,43 +18,51 @@ class OneNote extends React.Component {
 		}
 	}
 	componentDidMount () {
-		this.setTime = setInterval(() => {
+		// this.setTime = setInterval(() => {
 			// clearTimeout(this.setTime)
-			this.click()
-		}, 4000)
+			this.click(true)
+		// }, 0)
 	}
 	componentWillUnmount () {
-		clearInterval(this.setTime)
+		clearTimeout(this.setTime)
+		// clearInterval(this.setTime)
 	}
-	click () {
-		// this.setTime
-		// console.log('hello', this.refs.slide, this.state.index)
-		var div = this.refs.slide
-		var x = 1
-		var dur = 0
-		if (this.state.index < 5) {
-			x =  this.state.index + 1
-			dur = 2
+	click (isfirst) {
+		clearTimeout(this.setTime)
+		var timeout = 4000
+		if (this.state.index === 1 && !isfirst) {
+			timeout = 0
 		}
-		console.log(x * 665, dur, x)
-		div.style.transform = `translate(-${x * 665}px, 0)`
-		div.style.transition = `transform ${dur}s`
-		this.setState({
-			index: x
-		})
+		this.setTime = setTimeout(() => {
+			let div = this.refs.slide
+			let x = 1
+			let dur = 0
+			if (this.state.index < 5) {
+				x =  this.state.index + 1
+				dur = 2
+			}
+			console.log(this.state.index, timeout, dur)
+			
+			div.style.transform = `translate(-${x * 665}px, 0)`
+			div.style.transition = `transform ${dur}s`
+			this.setState({
+				index: x
+			})
+			this.click(false)
+		}, timeout)
+		
 	}
     render(){
     	const {data} = this.props
 	    return (
 	      <div style={{position: 'relative',background: '#fff', height: '100%', width: '100%', overflow: 'hidden'}}>
-	      	<div style={{position: 'absolute', top: '20px', left: '0',color: '#fff', cursor: 'pointer',zIndex: '1000'}} onClick={this.click.bind(this)}>cahnge</div>
 	      	<div ref='slide' className='slideContent'>
 	      		<div style={{display: 'inline-block',height: '500px', width: '665px',border: '1px solid #eee',backgroundColor: '#f00000'}}>04</div>
 	        	<div style={{display: 'inline-block',height: '500px', width: '665px',border: '1px solid #eee',backgroundColor: '#ff0000'}}>01</div>
 	        	<div style={{display: 'inline-block',height: '500px', width: '665px',border: '1px solid #eee',backgroundColor: '#fff000'}}>02</div>
 	        	<div style={{display: 'inline-block',height: '500px', width: '665px',border: '1px solid #eee',backgroundColor: '#ffff00'}}>03</div>
 	        	<div style={{display: 'inline-block',height: '500px', width: '665px',border: '1px solid #eee',backgroundColor: '#fffff0'}}>14</div>
-	        	<div style={{display: 'inline-block',height: '500px', width: '665px',border: '1px solid #eee',backgroundColor: '#ffeeee'}}>11</div>
+	        	<div style={{display: 'inline-block',height: '500px', width: '665px',border: '1px solid #eee',backgroundColor: '#ff0000'}}>11</div>
 	        	<div style={{display: 'inline-block',height: '500px', width: '665px',border: '1px solid #eee',backgroundColor: '#fffeee'}}>12</div>
 	        	<div style={{display: 'inline-block',height: '500px', width: '665px',border: '1px solid #eee',backgroundColor: '#ffffee'}}>13</div>
 	        	<div style={{display: 'inline-block',height: '500px', width: '665px',border: '1px solid #eee',backgroundColor: '#fffffe'}}>24</div>
