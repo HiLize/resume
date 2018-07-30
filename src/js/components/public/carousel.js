@@ -12,7 +12,9 @@ class Carousel extends React.Component {
 	};
 	constructor (props) {
 		super(props)
-		this.state = {}
+		this.state = {
+			index: 0
+		}
 	}
 	componentDidMount () {
 		this.click(true)
@@ -23,14 +25,14 @@ class Carousel extends React.Component {
 	click (isfirst) {
 		clearTimeout(this.setTime)
 		var timeout = 4000
-		if (this.state.index === 1 && !isfirst) {
+		if (this.state.index === 0 && !isfirst) {
 			timeout = 0
 		}
 		this.setTime = setTimeout(() => {
 			let div = this.refs.slide
-			let x = 1
+			let x = 0
 			let dur = 0
-			if (this.state.index < 5) {
+			if (this.state.index < 4) {
 				x =  this.state.index + 1
 				dur = 2
 			}
@@ -48,15 +50,11 @@ class Carousel extends React.Component {
     	const {data} = this.props
 	    return (
 	    	<div ref='slide' className='slideContent'>
-	      		<div style={{display: 'inline-block',height: '100%', width: '665px',border: '1px solid #eee',backgroundColor: '#f00000'}}>04</div>
 	        	<div style={{display: 'inline-block',height: '100%', width: '665px',border: '1px solid #eee',backgroundColor: '#ff0000'}}>01</div>
-	        	<div style={{display: 'inline-block',height: '100%', width: '665px',border: '1px solid #eee',backgroundColor: '#fff000'}}>02</div>
-	        	<div style={{display: 'inline-block',height: '100%', width: '665px',border: '1px solid #eee',backgroundColor: '#ffff00'}}>03</div>
-	        	<div style={{display: 'inline-block',height: '100%', width: '665px',border: '1px solid #eee',backgroundColor: '#fffff0'}}>14</div>
+	        	<div style={{display: 'inline-block',height: '100%', width: '665px',border: '1px solid #eee',backgroundColor: '#00ff00'}}>02</div>
+	        	<div style={{display: 'inline-block',height: '100%', width: '665px',border: '1px solid #eee',backgroundColor: '#0000ff'}}>03</div>
+	        	<div style={{display: 'inline-block',height: '100%', width: '665px',border: '1px solid #eee',backgroundColor: '#eeeeee'}}>04</div>
 	        	<div style={{display: 'inline-block',height: '100%', width: '665px',border: '1px solid #eee',backgroundColor: '#ff0000'}}>11</div>
-	        	<div style={{display: 'inline-block',height: '100%', width: '665px',border: '1px solid #eee',backgroundColor: '#fffeee'}}>12</div>
-	        	<div style={{display: 'inline-block',height: '100%', width: '665px',border: '1px solid #eee',backgroundColor: '#ffffee'}}>13</div>
-	        	<div style={{display: 'inline-block',height: '100%', width: '665px',border: '1px solid #eee',backgroundColor: '#fffffe'}}>24</div>
         	</div>
 	    );
    }
