@@ -63,7 +63,7 @@ class BaseLayout extends React.Component {
 	            </Menu.Item>
 	          </Menu>
 	        </Sider>
-		    <Layout style={{height: '100vh' }}>
+		    <Layout style={{height: '100vh', position: 'relative'}}>
 		      <Header style={{ background: '#fff', padding: 0 }}>
 	            <Icon
 	              className="trigger"
@@ -71,7 +71,7 @@ class BaseLayout extends React.Component {
 	              onClick={this.toggle}
 	            />
 	          </Header>
-		      <Content style={{ margin: '24px 16px', padding: 24, background: '#fff', minHeight: 280 , boxSizing: 'border-box', overflow: 'auto'}}>
+		      <Content style={{ margin: '24px 16px', padding: 24, background: '#fff', minHeight: 280 , boxSizing: 'border-box', overflow: 'auto', flex: '100px'}}>
 	      		<Route
 	      			exact
 		            path='/'

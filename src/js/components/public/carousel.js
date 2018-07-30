@@ -5,10 +5,10 @@ import '../../../css/index.css'
 class Carousel extends React.Component {
 	// propTypes 和 defaultProps 都需要static声明，不然会报错
 	static propTypes = {
-		data: PropTypes.object
+		data: PropTypes.array
 	};
 	static defaultProps = {
-    	data: {}
+    	data: ['01', '02', '03', '04']
 	};
 	constructor (props) {
 		super(props)
@@ -17,6 +17,12 @@ class Carousel extends React.Component {
 		}
 	}
 	componentDidMount () {
+		var container = this.refs.container.getBoundingClientRect()
+		var width = (this.props.data.length + 1) * container.width
+		this.setState({
+			singleWidth: container.width,
+			width: width
+		})
 		this.click(true)
 	}
 	componentWillUnmount () {
@@ -37,7 +43,7 @@ class Carousel extends React.Component {
 				dur = 2
 			}
 			
-			div.style.transform = `translate(-${x * 665}px, 0)`
+			div.style.transform = `translate(-${x * this.state.singleWidth}px, 0)`
 			div.style.transition = `transform ${dur}s`
 			this.setState({
 				index: x
@@ -48,13 +54,22 @@ class Carousel extends React.Component {
 	}
     render(){
     	const {data} = this.props
+    	const {width, singleWidth} = this.state
+    	var style = {
+			display: 'inline-block',
+			height: '100%',
+			width: `${singleWidth}px`,
+			backgroundColor: '#ff0000',
+			boxSizing: 'border-box'
+    	}
 	    return (
-	    	<div ref='slide' className='slideContent'>
-	        	<div style={{display: 'inline-block',height: '100%', width: '665px',border: '1px solid #eee',backgroundColor: '#ff0000'}}>01</div>
-	        	<div style={{display: 'inline-block',height: '100%', width: '665px',border: '1px solid #eee',backgroundColor: '#00ff00'}}>02</div>
-	        	<div style={{display: 'inline-block',height: '100%', width: '665px',border: '1px solid #eee',backgroundColor: '#0000ff'}}>03</div>
-	        	<div style={{display: 'inline-block',height: '100%', width: '665px',border: '1px solid #eee',backgroundColor: '#eeeeee'}}>04</div>
-	        	<div style={{display: 'inline-block',height: '100%', width: '665px',border: '1px solid #eee',backgroundColor: '#ff0000'}}>11</div>
+	    	<div ref='container' style={{width: '100%', height: '100%'}}>
+		    	<div ref='slide' className='slideContent' style={{width: width + 'px'}}>
+		    		{data.map(function(info, index) {
+		    			return <div style={style} key={index}>{info}</div>
+		    		})}
+		    		<div style={style}>{data[0]}</div>
+	        	</div>
         	</div>
 	    );
    }

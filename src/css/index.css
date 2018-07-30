@@ -26,7 +26,7 @@ body {
     transition: color .3s;
 }
 .slideContent {
-	width: 5985px;
+	width: auto;
 	height: 100%;
 	transform: translate(0px, 0);
 }
