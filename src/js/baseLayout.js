@@ -71,7 +71,7 @@ class BaseLayout extends React.Component {
 	              onClick={this.toggle}
 	            />
 	          </Header>
-		      <Content style={{ margin: '24px 16px', padding: 24, background: '#fff', minHeight: 280 }}>
+		      <Content style={{ margin: '24px 16px', padding: 24, background: '#fff', minHeight: 280 , boxSizing: 'border-box'}}>
 	      		<Route
 	      			exact
 		            path='/'
